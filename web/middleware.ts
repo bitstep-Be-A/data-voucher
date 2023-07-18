@@ -1,31 +1,34 @@
 import { NextResponse } from 'next/server'
 import { NextRequest } from 'next/server'
 
+import {
+  authPermissionRoutes,
+  routes
+} from '@/routes';
+import { AUTH_TOKEN_COOKIE_KEY } from '@/constants';
+
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  const authToken = request.cookies.get('auth/token');
+  let response;
+
   const currPath = request.nextUrl.pathname;
 
-  if (currPath === '/') {
-    return NextResponse.redirect(new URL('/start-now', request.url));
+  const authToken = request.cookies.get(AUTH_TOKEN_COOKIE_KEY);
+
+  for (let route of Object.values(authPermissionRoutes)) {
+    if (route.re.test(currPath)) {
+      if (!authToken)
+        response = NextResponse.redirect(new URL(routes.login.path, request.url));
+        break;
+    }
   }
-  if (/^\/service\b/.test(currPath)) {
-    if (!authToken)
-      return NextResponse.redirect(new URL('/service/login', request.url));
-    
-    if (currPath === '/service')
-      return NextResponse.redirect(new URL('/service/page', request.url));
-      
-  }
+
+  return response;
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    '/',
-    '/about',
-    '/client',
-    '/service',
-    '/start-now'
+    ...Object.values(routes).map((route) => route.path)
   ]
 };
