@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.z-bg {
+    z-index: -100;
+}
+
+.screen-shadow {
+    box-shadow: 50px 30px 70px 10px #ABB4BA
+}
