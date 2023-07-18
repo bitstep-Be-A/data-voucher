@@ -1,26 +1,26 @@
-# 리틀리 클론 코딩 with Next.js 13
+# Project guide
 
-## 분석 사항
+## Issue
 
-리틀리는 크게 두개의 도메인으로 이루어 집니다.
+Issue에는 Feature와 Debug를 정리합니다.
+Title에는 [Feature] 혹은 [Debug]를 앞에 표시 후 타이틀을 작성합니다.
 
-1. litt.ly
+컨텐츠의 양식은 다음과 같습니다.
 
-후원, 사용방법, 문의하기, 제품판매 등 제공
-페이지 조회 기능: litt.ly/:username
+```plain
+작업일
 
-2. app.litt.ly
+- [ ] 작업 내용 [commit link(사항 있다면)]
+```
 
-리틀리 메인 서비스
-  -> register, signin
-  -> 프로필 페이지 생성 - 페이지(/page), 디자인(/design), 분석(/report), 관리(/manage)
+## Branch
 
-## 핵심 개발 사항
+main branch는 feature/#(issue id)와 같이 네이밍합니다. ex) feature/#10
 
-* Firebase auth + Social 로그인 인증
-* 프로필 페이지 생성 관련 model 설계
-* 메인 서비스 페이지 생성 후, 공유
+## PR
 
-## 구현
+Pull request title은 다음과 같습니다.
 
-* 프로필 페이지 생성 쪽 도메인(app.litt.ly)은 /service로 관리합니다.
+[branch 명] [@author]
+
+ex) feature/#10 @jinhyeok (#5)
