@@ -19,8 +19,10 @@ main branch는 feature/#(issue id)와 같이 네이밍합니다. ex) feature/#10
 
 ## PR
 
-Pull request title은 다음과 같습니다.
+pull request는 commit 하나에만 할당됩니다.
 
-[branch 명] [@author]
+최종 merge commit 시 Pull request title은 다음과 같습니다.
 
-ex) feature/#10 @jinhyeok (#5)
+[branch 명] [@author] PR(pr id)
+
+ex) feature/#10 @jinhyeok15 PR(#5)
