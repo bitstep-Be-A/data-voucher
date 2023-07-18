@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import { routes } from "@/routes";
+
 export default function Error({
   error,
   reset,
@@ -17,7 +19,7 @@ export default function Error({
       <div className="w-fit">
         <p className="mt-40 text-3xl">{ error.message }</p>
         <div className="w-full flex flex-row justify-between mt-10 px-2">
-          <Link className="underline hover:text-blue-500" href="/">홈 바로가기</Link>
+          <Link className="underline hover:text-blue-500" href={routes.home.path}>홈 바로가기</Link>
           <button
             className="underline hover:text-blue-500"
             onClick={() => router.back()}
