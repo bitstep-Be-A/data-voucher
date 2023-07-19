@@ -11,6 +11,14 @@ export const publicRoutes: { [key: string]: Route } = {
   'login': {
     path: '/login',
     re: new RegExp('^/login')
+  },
+  'findCredentialId': {
+    path: '/login?find=id',
+    re: new RegExp('^/login?find=id')
+  },
+  'findCredentialPw': {
+    path: '/login?find=pw',
+    re: new RegExp('^/login?find=pw')
   }
 }
 
