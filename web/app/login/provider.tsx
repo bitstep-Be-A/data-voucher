@@ -2,14 +2,14 @@
 
 import { createContext } from "react";
 
-import { ControllerHookReturn, useController } from "@/controllers/hooks";
+import { IObjectController, useController } from "@/controllers/hooks";
 import { User } from "@/models/user";
 import { UserController } from "@/controllers/user.controller";
 import userService from "@/services/user.service";
 import { userStore } from "@/recoil/stores/user.store";
 
 export interface LoginControllerStore {
-  userController: ControllerHookReturn<User>;
+  userController: IObjectController<User>;
 }
 
 export const LoginContext = createContext<LoginControllerStore | null>(null);

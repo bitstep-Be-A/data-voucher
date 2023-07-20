@@ -5,7 +5,7 @@ import { DataStore } from "@/recoil/store";
 import { IController } from ".";
 import { Key } from "@/models/types";
 
-export interface ControllerHookReturn<T> {
+export interface IObjectController<T> {
   create: (data: T) => Promise<void>;
   update: (data: T, key: Key) => Promise<void>;
   remove: (key: Key) => Promise<void>;
@@ -18,7 +18,7 @@ export const useController = <T>(
     filter?: object;
     key?: Key;
   }
-): ControllerHookReturn<T> => {
+): IObjectController<T> => {
   let token: string;
 
   const [storeState, setStoreState] = useRecoilState(store);
