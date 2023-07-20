@@ -5,6 +5,7 @@ import {
   FindCredentialIdForm,
   FindCredentialPwForm
 } from "./form";
+import LoginProvider from "./provider";
 
 export default function LoginPage({
   searchParams
@@ -27,8 +28,8 @@ export default function LoginPage({
   else { notFound(); }
 
   return (
-    <>
+    <LoginProvider>
       { Form }
-    </>
+    </LoginProvider>
   );
 }
