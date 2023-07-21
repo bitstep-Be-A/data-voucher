@@ -4,28 +4,44 @@ export interface Route {
 }
 
 export const publicRoutes: { [key: string]: Route } = {
-  'home': {
+  home: {
     path: '/',
     re: new RegExp('^/$')
   },
-  'login': {
+  login: {
     path: '/login',
     re: new RegExp('^/login')
   },
-  'findCredentialId': {
+  register: {
+    path: '/register',
+    re: new RegExp('^/register')
+  },
+  findCredentialId: {
     path: '/login?find=id',
     re: new RegExp('^/login?find=id')
   },
-  'findCredentialPw': {
+  findCredentialPw: {
     path: '/login?find=pw',
     re: new RegExp('^/login?find=pw')
   }
 }
 
 export const authPermissionRoutes: { [key: string]: Route } = {
-  'search': {
+  search: {
     path: '/search',
     re: new RegExp('^/search')
+  },
+  bookmark: {
+    path: '/bookmark',
+    re: new RegExp('^/bookmark')
+  },
+  docs: {
+    path: '/docs',
+    re: new RegExp('^/docs')
+  },
+  my: {
+    path: '/my',
+    re: new RegExp('^/my')
   }
 }
 

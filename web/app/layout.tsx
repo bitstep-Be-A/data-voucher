@@ -3,6 +3,8 @@ import RecoilRootWrapper from "@/recoil/wrapper";
 import "./globals.css";
 import localFont from 'next/font/local';
 
+import { BaseContainer } from "@/components/container";
+
 const pretendard = localFont({
   src: [
     {
@@ -38,9 +40,11 @@ export default function RootLayout({
     <html lang="en" className={pretendard.variable}>
       <body>
         <RecoilRootWrapper>
-          <main className="min-w-screen min-h-screen font-pretendard">
-            {wrapper}
-            {children}
+          <main className="w-screen h-screen font-pretendard">
+            <BaseContainer>
+              {wrapper}
+              {children}
+            </BaseContainer>
           </main>
         </RecoilRootWrapper>
       </body>

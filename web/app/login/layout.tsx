@@ -1,4 +1,4 @@
-import { CenteredLayout } from "@/components/layout";
+import { CenteredContainer } from "@/components/container";
 
 export default function LoginLayout({
   children,
@@ -6,8 +6,8 @@ export default function LoginLayout({
   children: React.ReactNode;
 }) {
   return (
-    <CenteredLayout>
+    <CenteredContainer>
       {children}
-    </CenteredLayout>
+    </CenteredContainer>
   );
 }
