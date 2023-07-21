@@ -3,6 +3,7 @@ import { useRecoilState, RecoilState } from "recoil";
 
 import { DataStore } from "@/recoil/store";
 import { IController, IObjectController } from ".";
+import { useAuthToken } from "@/recoil/hooks/auth.hook";
 import { Key } from "@/models/types";
 
 export const useController = <T>(
@@ -13,7 +14,7 @@ export const useController = <T>(
     key?: Key;
   }
 ): IObjectController<T> => {
-  let token: string;
+  const token: string = useAuthToken();
 
   const [storeState, setStoreState] = useRecoilState(store);
   const { isFetched, loading } = storeState;

@@ -4,19 +4,18 @@ import Link from "next/link";
 
 export interface ILinkMenu {
   path: string; // url should be follow Link href attribute style ex) "/about"
-  rePath: RegExp;
   item: React.ReactNode;  
 }
 
-export interface NavBarProps {
+export interface NavProps {
   linkMenus: ILinkMenu[];
   className?: string;
 }
 
-const NavBar = ({
+const Nav = ({
   linkMenus,
   className,
-}: NavBarProps) => {
+}: NavProps) => {
   return (
     <nav className={className}>
       {
@@ -33,4 +32,4 @@ const NavBar = ({
   )
 }
 
-export default NavBar;
+export default Nav;
