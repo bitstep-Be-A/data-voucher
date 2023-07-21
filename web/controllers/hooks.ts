@@ -2,14 +2,8 @@ import { useEffect, useCallback } from "react";
 import { useRecoilState, RecoilState } from "recoil";
 
 import { DataStore } from "@/recoil/store";
-import { IController } from ".";
+import { IController, IObjectController } from ".";
 import { Key } from "@/models/types";
-
-export interface IObjectController<T> {
-  create: (data: T) => Promise<void>;
-  update: (data: T, key: Key) => Promise<void>;
-  remove: (key: Key) => Promise<void>;
-}
 
 export const useController = <T>(
   controller: IController<T>,
@@ -50,7 +44,7 @@ export const useController = <T>(
     }
   }, [isFetched]);
 
-  const create = useCallback(async (data: T) => {
+  const add = useCallback(async (data: T) => {
     setStoreState({
       ...storeState,
       loading: true
@@ -62,7 +56,7 @@ export const useController = <T>(
     });
   }, [storeState, setStoreState]);
 
-  const update = useCallback(async (data: T, key: Key) => {
+  const modify = useCallback(async (data: T, key: Key) => {
     setStoreState({
       ...storeState,
       loading: true
@@ -79,12 +73,12 @@ export const useController = <T>(
       ...storeState,
       loading: true
     });
-    await controller.remove(key, token);
+    await controller.destroy(key, token);
     setStoreState({
       ...storeState,
       isFetched: true
     });
   }, [storeState, setStoreState]);
 
-  return { create, update, remove }
+  return { add, modify, remove }
 }

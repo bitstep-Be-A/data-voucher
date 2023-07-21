@@ -17,7 +17,7 @@ export class UserController implements IController<User> {
   async update(data: User, key?: Key, token?: string) {
 
   }
-  async remove(key?: Key, token?: string) {
+  async destroy(key?: Key, token?: string) {
 
   }
 }

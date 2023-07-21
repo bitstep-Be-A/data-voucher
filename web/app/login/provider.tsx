@@ -2,7 +2,8 @@
 
 import { createContext } from "react";
 
-import { IObjectController, useController } from "@/controllers/hooks";
+import { useController } from "@/controllers/hooks";
+import { IObjectController } from "@/controllers";
 import { User } from "@/models/user";
 import { UserController } from "@/controllers/user.controller";
 import userService from "@/services/user.service";
