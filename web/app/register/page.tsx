@@ -1,9 +1,12 @@
-import Image from "next/image";
+import RegisterContainer from "./container";
+import RegisterProvider from "./provider";
 
 export default function RegisterPage() {
   return (
-    <main className="flex w-full h-full flex-col items-center justify-center">
-      <div>Register page</div>
-    </main>
+    <RegisterProvider>
+      <RegisterContainer>
+        
+      </RegisterContainer>
+    </RegisterProvider>
   );
 }
