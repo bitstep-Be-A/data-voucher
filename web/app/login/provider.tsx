@@ -1,31 +1,37 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 
 import { useController } from "@/controllers/hooks";
 import { IObjectController } from "@/controllers";
-import { User } from "@/models/user";
-import { UserController } from "@/controllers/user.controller";
-import userService from "@/services/user.service";
-import { userStore } from "@/recoil/stores/user.store";
+import { AuthCredentialData } from "@/forms/auth.data";
+import { AuthCredentialController } from "@/controllers/auth.controller";
+import { authStore } from "@/recoil/stores/auth.store";
+import { AuthCredentialService } from "@/services/auth.service";
 
 export interface LoginControllerStore {
-  userController: IObjectController<User>;
+  authCredentialController: IObjectController<AuthCredentialData>;
 }
 
-export const LoginContext = createContext<LoginControllerStore | null>(null);
+const LoginContext = createContext<LoginControllerStore | null>(null);
+
+export const useLoginController = () => {
+  return useContext(LoginContext);
+}
 
 export default function LoginProvider({ children }: {
   children: React.ReactNode;
 }) {
-  const userController = useController(
-    new UserController(userService),
-    userStore
-  )
+  const authCredentialController = useController(
+    new AuthCredentialController(
+      new AuthCredentialService()
+    ),
+    authStore
+  );
 
   return (
     <LoginContext.Provider value={{
-      userController,
+      authCredentialController,
     }}>
       {children}
     </LoginContext.Provider>

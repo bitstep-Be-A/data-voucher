@@ -1,8 +1,13 @@
 import { selector } from "recoil";
 
-import { authTokenStore } from "../stores/auth.store";
+import { authStore } from "../stores/auth.store";
+
+export const authStoreSelector = selector({
+  key: 'selector/auth/Auth',
+  get: ({ get }) => get(authStore)
+});
 
 export const authTokenSelector = selector({
   key: 'selector/auth/token',
-  get: ({ get }) => get(authTokenStore)
+  get: ({ get }) => get(authStore).item?.token
 });
